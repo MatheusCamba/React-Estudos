@@ -4,14 +4,29 @@ import { NavContainer, Image, Input, ContainerMain, ContainerTeste } from "./sty
 
 import logo from '../../assets/logo.svg'
 import { Card } from "../Card/Card";
-import { FiSearch } from 'react-icons/fi'
+
 
 import {data} from '../../../data.js'
 
 export function Nav() {
     const [search, setSeach] = useState("")
 
-    console.log(data)
+    function abbreviateNumber(value) {
+        var newValue = value;
+        if (value >= 1000) {
+            let suffixes = ["", "mil", "milhoes", "bilhoes","trilhoes"];
+            let suffixNum = Math.floor( (""+value).length/3 );
+            let shortValue = '';
+            for (let precision = 2; precision >= 1; precision--) {
+                shortValue = parseFloat( (suffixNum != 0 ? (value / Math.pow(1000,suffixNum) ) : value).toPrecision(precision));
+                let dotLessShortValue = (shortValue + '').replace(/[^a-zA-Z 0-9]+/g,'');
+                if (dotLessShortValue.length <= 2) { break; }
+            }
+            if (shortValue % 1 != 0)  shortValue = shortValue.toFixed(1);
+            newValue = shortValue+suffixes[suffixNum];
+        }
+        return newValue;
+    }
 
     return (
         <>
@@ -29,7 +44,7 @@ export function Nav() {
                                     return info
                                 }
                             }).map((item, index) => (
-                                <Card key={index} image={item.url} name={item.name} likes={item.likes} views={item.views}/>
+                                <Card key={index} image={item.url} name={item.name} likes={abbreviateNumber(item.likes)} views={abbreviateNumber(item.views)}/>
                             ))
                         }
                     </ContainerTeste>
