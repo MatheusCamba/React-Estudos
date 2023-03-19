@@ -12,5 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Chakra Petch', sans-serif;
     width: 100vw;
     height: 100vh;
+    background-color: #8257e5;
+    color: #fff;
   }
   `;
