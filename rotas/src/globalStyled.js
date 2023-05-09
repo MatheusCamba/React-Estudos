@@ -8,7 +8,8 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'Press Start 2P', cursive;
+        /* font-family: 'Press Start 2P', cursive; */
+        font-family: 'Montserrat', sans-serif;
         background-color: #bbb;
         color: #000;
     }
