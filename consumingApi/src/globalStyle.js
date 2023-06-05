@@ -8,22 +8,18 @@ const globalStyle = createGlobalStyle`
     }
 
     body {
-        font-family: 'Oswald', sans-serif;
+        font-family: monospace;
         font-size: 16px;
-        letter-spacing: 1px;
         background-color: #bbb;
         color: #000;
-        display: flex;
+        /* display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         padding: 30px;
-        list-style: none;
+        list-style: none; */
 
-        background-image: url('https://c8p9p3e5.rocketcdn.me/wp-content/uploads/2022/02/blank-kanye-notepad-meme.jpg');
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover
+        
     }
 `
 
