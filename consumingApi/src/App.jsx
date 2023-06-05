@@ -2,6 +2,7 @@ import React, { useCallback } from "react";
 import styled, {keyframes} from "styled-components";
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
+import {AiOutlineLoading3Quarters} from 'react-icons/ai'
 
 const MainWrapper = styled.main`
   width: 100%;
@@ -90,6 +91,28 @@ const Button = styled.button`
 
 `;
 
+  const spin = keyframes`
+    0% {
+      transform: rotate(0);
+    } 100% {
+      transform: rotate(360deg);
+    }
+  `
+
+  const LoadingSpinner = styled(AiOutlineLoading3Quarters)`
+    animation: ${spin} 1800ms infinite linear;
+    font-size:16px;
+    
+  `
+
+  const ButtonSubmit = styled.button`
+    padding: 16px 32px;
+    font-size:18px;
+    border-radius: 100rem;
+
+    cursor: pointer;
+  `
+
 function App() {
   const [requestsGet, setRequestsGet] = useState([]);
   const wasRequested = useRef(false);
@@ -154,7 +177,8 @@ function App() {
           <Input type="text" id="userId" />
         </WrapperGroup>
         {/* <ButtonLoading loading={loading} type="submit" >{loading ? null : 'Clique Aqui'}</ButtonLoading> */}
-        <Button loading={loading} type="submit">{loading ? null : 'Clique Aqui'}</Button>
+        {/* <Button loading={loading} type="submit">{loading ? null : 'Clique Aqui'}</Button> */}
+        <ButtonSubmit>{loading ? <LoadingSpinner/> : 'Submit'}</ButtonSubmit>
         
       </WrapperForm>
 
